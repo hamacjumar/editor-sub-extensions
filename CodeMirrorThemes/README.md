@@ -4,7 +4,9 @@ Version: 1.0.0<br>
 Exported By: Jumar B. Hamac<br>
 
 
-This is an extension for adding some CodeMirror themes to the code editor.
+This is an extension for adding some CodeMirror themes to the code editor. You can also use this as a reference if you want to create themes for the Editor.
+
+You can look for more themes [here](https://www.jsdelivr.com/package/npm/codemirror?tab=files) if you want to export them into the Editor of DroidScript.
 
 Themes:
 
