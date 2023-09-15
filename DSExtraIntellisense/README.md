@@ -8,3 +8,8 @@ Adding intellisense to
 
 - cfg - App configurations.
 - js-keywords - Javascript keywords.
+
+## How to install?
+
+- Copy the `DSExtraIntellisense.js` file of the sub-extension into the `"Extensions/Edit/Editor"` folder in your phone's DroidScript directory.
+- Reload DroidScript's WiFi IDE.

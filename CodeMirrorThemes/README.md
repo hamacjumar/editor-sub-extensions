@@ -17,3 +17,8 @@ Themes:
 - `Dracula`<br>
 	Author: Michael Kaminsky (http://github.com/mkaminsky11)<br>
 	Original dracula color scheme by Zeno Rocha (https://github.com/zenorocha/dracula-theme)
+
+## How to install?
+
+- Copy the `CodeMirrorThemes.js` file of the sub-extension into the `"Extensions/Edit/Editor"` folder in your phone's DroidScript directory.
+- Reload DroidScript's WiFi IDE.

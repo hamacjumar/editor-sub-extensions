@@ -17,3 +17,8 @@ editor.open("/MyProject/Img/logo.png", {
 ```
 
 This will open a TabWindow to view the image.
+
+## How to install?
+
+- Copy the `ImageViewer.js` file of the sub-extension into the `"Extensions/Edit/Editor"` folder in your phone's DroidScript directory.
+- Reload DroidScript's WiFi IDE.
