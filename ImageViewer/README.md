@@ -1,6 +1,6 @@
 # ImageViewer
 
-Version: 1.1.1<br>
+Version: 1.1.2<br>
 Author: Jumar Hamac<br>
 Copyright: droidscript.org
 
