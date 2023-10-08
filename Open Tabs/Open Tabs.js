@@ -106,4 +106,3 @@ editor.registerExtension("Open Tabs", {
         tabsList.active = o;
     }
 });
-

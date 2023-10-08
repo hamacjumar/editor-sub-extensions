@@ -16,6 +16,7 @@ editor.registerExtension("Img Folder", {
     desc: "View the Img/ folder"
 }, function() {
     var extName = "Img Folder";
+    const showOnSidebar = true;
     
     var imgList = [];
     var ext = "png,jpg,jpeg";
@@ -26,7 +27,7 @@ editor.registerExtension("Img Folder", {
         var img = item;
         editor.open(img[0], {
             open: true,
-            type: "image"
+            // type: "image"
         });
     });
     
@@ -34,9 +35,12 @@ editor.registerExtension("Img Folder", {
         title: extName,
         show: {}
     }
-    editor.addNavBarItem("photo", navBarOpt, function() {
-        panel.toggle();
-    });
+    
+    if( showOnSidebar ) {
+        editor.addNavBarItem("photo", navBarOpt, function() {
+            panel.toggle();
+        });
+    }
     
     
     let files = editor.dir.listFolder(editor.dir.appName+"/Img", function( data ) {
@@ -56,5 +60,3 @@ editor.registerExtension("Img Folder", {
         listFiles.list = imgList;
     }
 });
-
-

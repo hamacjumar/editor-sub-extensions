@@ -42,11 +42,11 @@ editor.registerExtension("Project Files", {
     var listFiles = editor.addList(leftPanel, [], "Image", 1, 1);
     // listFiles._div.style.height = "calc(100% - 36px)";
     listFiles.setOnTouch(function(item, i) {
+        var ext = item[1].substr(item[1].lastIndexOf(".")+1).toLowerCase();
         editor.open(editor.dir.appName+"/"+item[1], {
-            type: "code-editor",
+            // type: "code-editor",
             open: true
         });
-        var ext = item[1].substr(item[1].lastIndexOf(".")+1).toLowerCase();
         langItem.setText(langs[ext] || "Unknown File");
     });
     
@@ -123,4 +123,3 @@ editor.registerExtension("Project Files", {
         langItem.setText(langs[ext] || "Unknown File");
     })
 });
-

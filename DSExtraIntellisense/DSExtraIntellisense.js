@@ -1,15 +1,15 @@
 
 /**
-# DSExtraIntellisense
-
-Version 1.1.1
-
-Additional intellisense for DroidScript not included in the app object.
-
-Adding intellisense to
-
-- cfg - App configurations.
-- js-keywords - Javascript keywords.
+ * # DSExtraIntellisense
+ * 
+ * Version 1.1.1
+ * 
+ * Additional intellisense for DroidScript not included in the app object.
+ * 
+ * Adding intellisense to
+ * 
+ * - cfg - App configurations.
+ * - js-keywords - Javascript keywords.
  */
 
 editor.registerExtension("DSExtraIntellisense", {
@@ -19,45 +19,44 @@ editor.registerExtension("DSExtraIntellisense", {
     var extName = "DSExtraIntellisense";
     
     var code = `
-        // Additional app configurations.
-        var cfg = {};
+// Additional app configurations.
+var cfg = {};
 
-        /**
-         * @type{String} The default app with no additional styling.
-         */
-        cfg.Holo = null;
+/**
+ * @type{String} The default app with no additional styling.
+ */
+cfg.Holo = null;
 
-        /**
-         * @type{String} Dark material theme.
-         */
-        cfg.Dark = null;
+/**
+ * @type{String} Dark material theme.
+ */
+cfg.Dark = null;
 
-        /**
-         * @type{String} Light material theme.
-         */
-        cfg.Light = null;
+/**
+ * @type{String} Light material theme.
+ */
+cfg.Light = null;
 
-        /**
-         * @type{String} Include the Material UI Components.
-         */
-        cfg.MUI = null;
+/**
+ * @type{String} Include the Material UI Components.
+ */
+cfg.MUI = null;
 
-        /**
-         * @type{String} App is Hybrid app that uses the UI Components.
-         */
-        cfg.Hybrid = null;
+/**
+ * @type{String} App is Hybrid app that uses the UI Components.
+ */
+cfg.Hybrid = null;
 
-        /**
-         * @type{String} Force the app orientation to portrait.
-         */
-        cfg.Portrait = null;
+/**
+ * @type{String} Force the app orientation to portrait.
+ */
+cfg.Portrait = null;
 
-        /**
-         * @type{String} Force the app orientation to landscape.
-         */
-        cfg.Landscape = null;
-    `;
-
+/**
+ * @type{String} Force the app orientation to landscape.
+ */
+cfg.Landscape = null;
+`;
 	editor.addIntellisense( code );
 	
 	var keyWords = [
@@ -104,4 +103,3 @@ editor.registerExtension("DSExtraIntellisense", {
     
     editor.addAutocomplete( keyWords );
 });
-

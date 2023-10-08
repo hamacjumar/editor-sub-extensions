@@ -1,22 +1,32 @@
 /*
 # Extensions
 
-Version: 1.0.1<br>
+Version: 1.0.2<br>
 Author: Jumar Hamac<br>
 Copyright: droidscript.org
 
 The Extensions section is also an extension.
 
 Lets you view all the installed extension and view their documentation.
+
+### Notable releases
+
+Version 1.0.2
+- Show system "JSONTreeView" extension docs.
+- Show system "MarkdownLiveViewer" extension docs.
+
+Version 1.0.2
+- Show system "ImageViewer" extension docs.
+
 */
 editor.registerExtension("Extensions", {
-    version: "1.0.1",
+    version: "1.0.2",
     desc: "List of installed extensions"
 }, function() {
     var extName = "Extensions";
     var extensions = [];
     var list = [];
-    var editorExtensions = ["ImageViewer"];
+    var editorExtensions = ["ImageViewer", "JSONTreeView", "MarkdownLiveViewer"];
     
     editor.addScript( editor.dir.getExtFilePath("Edit", "js/esprima.js") );
     

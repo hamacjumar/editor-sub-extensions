@@ -2,7 +2,7 @@
 /*
 # ImageViewer
 
-Version: 1.1.1<br>
+Version: 1.1.2<br>
 Author: Jumar Hamac<br>
 Copyright: droidscript.org
 
@@ -22,12 +22,16 @@ This will open a TabWindow to view the image.
 */
 
 editor.registerExtension("ImageViewer", {
-    version: "1.1.1",
+    version: "1.1.2",
     desc: "A simple image viewer extension."
 }, function() {
     var extName = "ImageViewer";
     
-    editor.addTabType("image", {}, function( tab ) {
+    var opt = {
+        fileTypes: ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'webp'],
+        extName: extName
+    }
+    editor.addTabType("image", opt, function( tab ) {
         tab.layout.options = "VCenter,Center"
         var src = "/" + tab.filePath;
         scr = src.replace(/\/\//gm, "/");

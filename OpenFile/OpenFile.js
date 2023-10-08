@@ -17,7 +17,7 @@ editor.registerExtension("OpenFile", {
     const showOnSidebar = true;
     
     var tabWindow = null;
-    const fileTypes = "js,html,css,json,inc,txt,md,py";
+    const fileTypes = "js,html,css,json,inc,txt,md,py,ttf";
     
     if( showOnSidebar ) {
      	editor.addNavBarItem("insert_drive_file", {
