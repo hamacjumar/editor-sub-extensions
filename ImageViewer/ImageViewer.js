@@ -34,7 +34,7 @@ editor.registerExtension("ImageViewer", {
     editor.addTabType("image", opt, function( tab ) {
         tab.layout.options = "VCenter,Center"
         var src = "/" + tab.filePath;
-        scr = src.replace(/\/\//gm, "/");
+        src = src.replace(/\/\//gm, "/");
         var img = document.createElement("img");
         tab.appendChild(img);
         img.style.position = "absolute";
@@ -45,6 +45,6 @@ editor.registerExtension("ImageViewer", {
         img.style.maxHeight  = "95%";
         img.style.width  = "auto";
         img.style.height  = "auto";
-        img.src = scr;
+        img.src = src;
     });
 });
