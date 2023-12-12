@@ -14,7 +14,6 @@ editor.registerExtension("Project Files", {
     desc: "View your project root files."
 }, function() {
     const extName = "Project Files";
-    const showOnSidebar = true;
     
     var folders = "Html,Misc,Img,Snd";
     var fileTypes = "js,html,css,md,txt,png,jpg,jpeg,mpeg,json,py";
@@ -39,7 +38,7 @@ editor.registerExtension("Project Files", {
     }
     
     var leftPanel = editor.getLeftPanel( extName );
-    var listFiles = editor.addList(leftPanel, [], "Image", 1, 1);
+    var listFiles = editor.addList(leftPanel, [], "Image,Search", 1, 1);
     // listFiles._div.style.height = "calc(100% - 36px)";
     listFiles.setOnTouch(function(item, i) {
         var ext = item[1].substr(item[1].lastIndexOf(".")+1).toLowerCase();
@@ -55,11 +54,9 @@ editor.registerExtension("Project Files", {
         title: extName
     }
     
-    if(showOnSidebar === true) {
-        var navItem = editor.addNavBarItem("folder", options, function() {
-            leftPanel.toggle();
-        });
-    }
+    var navItem = editor.addNavBarItem("folder", options, function() {
+        leftPanel.toggle();
+    });
     
     var langItem = editor.addStatusBarItem();
     
