@@ -1,6 +1,6 @@
 
 /*
-# Img Folder
+# Img
 
 Version: 1.1.0<br>
 Author: Jumar Hamac<br>
@@ -11,12 +11,11 @@ This extension let's you view the images in the `Img/` folder of your project.
 This extension uses the `ImageViewer` extension to view the images.
 */
 
-editor.registerExtension("Img Folder", {
+editor.registerExtension("Img", {
     version: "1.1.0",
     desc: "View the Img/ folder"
 }, function() {
-    var extName = "Img Folder";
-    const showOnSidebar = true;
+    const extName = "Img";
     
     var imgList = [];
     var ext = "png,jpg,jpeg";
@@ -27,7 +26,7 @@ editor.registerExtension("Img Folder", {
         var img = item;
         editor.open(img[0], {
             open: true,
-            // type: "image"
+            type: "image"
         });
     });
     
@@ -36,11 +35,9 @@ editor.registerExtension("Img Folder", {
         show: {}
     }
     
-    if( showOnSidebar ) {
-        editor.addNavBarItem("photo", navBarOpt, function() {
-            panel.toggle();
-        });
-    }
+    editor.addNavBarItem("photo", navBarOpt, function() {
+        panel.toggle();
+    });
     
     
     let files = editor.dir.listFolder(editor.dir.appName+"/Img", function( data ) {
@@ -52,11 +49,32 @@ editor.registerExtension("Img Folder", {
     function initLeftPanel( files ) {
         files = files.filter( m => {
             let ext = m.substr(m.lastIndexOf(".")+1).toLowerCase();
-            return ext.includes(ext);
+            return ext.includes( ext );
         });
-        imgList = files.map(m => {
-            return [editor.dir.appName+"/Img/"+m, m];
+        imgList = files.map((m, i) => {
+            return [editor.dir.appName+"/Img/"+m, m, "", "", "inset"+i];
         });
         listFiles.list = imgList;
     }
+    
+    editor.file.addListener("onDelete", function( data ) {
+        imgList = imgList.filter(m => {
+            return (m[0] !== data.filePath && m[1]!== data.fileName);
+        });
+        listFiles.list = imgList;
+    });
+    
+    editor.file.addListener("onRename", function( data ) {
+        let n = imgList.findIndex(m => {
+            return (m[0] == data.filePath && m[1] == data.fileName);
+        });
+        imgList[n] = [data.newFilePath, data.newFileName];
+        listFiles.list = imgList;
+        let tab = editor.tab.getActive();
+        tab.tab.close();
+        editor.open(data.newFilePath, {
+            open: true,
+            type: "image"
+        });
+    });
 });
