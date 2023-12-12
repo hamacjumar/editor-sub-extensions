@@ -25,7 +25,8 @@ editor.registerExtension("ImageViewer", {
     version: "1.1.2",
     desc: "A simple image viewer extension."
 }, function() {
-    var extName = "ImageViewer";
+    const extName = "ImageViewer";
+    let activeImage = "";
     
     var opt = {
         fileTypes: ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'webp'],
@@ -34,7 +35,7 @@ editor.registerExtension("ImageViewer", {
     editor.addTabType("image", opt, function( tab ) {
         tab.layout.options = "VCenter,Center"
         var src = "/" + tab.filePath;
-        src = src.replace(/\/\//gm, "/");
+        scr = src.replace(/\/\//gm, "/");
         var img = document.createElement("img");
         tab.appendChild(img);
         img.style.position = "absolute";
@@ -45,6 +46,49 @@ editor.registerExtension("ImageViewer", {
         img.style.maxHeight  = "95%";
         img.style.width  = "auto";
         img.style.height  = "auto";
-        img.src = src;
+        img.src = scr;
     });
+    
+    var hlp = ui.addButtonGroup(editor.header.left, ["edit", "delete"], "Small,Icon");
+    hlp.toolTips = ["Rename image", "Remove image"];
+    hlp.setOnTouch(function(text, index) {
+        var tab = editor.tab.getActive();
+        console.log( tab );
+        if(tab.type == "image") {
+            let dlg = null;
+            if(text == "edit") {
+                dlg = ui.addDialog("Rename image", "", ["Close","Rename"]);
+                const lay = ui.addLayout(dlg.layout, "Linear", "VCenter", "20rem");
+                const edt = ui.addTextField(lay, tab.name, "Outlined", 1);
+                edt.label = "Enter new name";
+                dlg.setOnAction(action => {
+                    let newName = edt.text;
+                    let newFilePath = tab.folderPath + "/" + newName;
+                    editor.file.rename(tab.filePath, newFilePath, function() {
+                        console.log( "Rename image" );
+                    });
+                });
+                dlg.show();
+            }
+            else if(text == "delete") {
+                let txt = 'Do you want to remove "'+tab.name+'"';
+                dlg = ui.addDialog("Remove image",txt, ["Close", "Remove"]);
+                dlg.setOnAction(action => {
+                    if(action == "Remove") {
+                        editor.file.delete(tab.filePath, function() {
+                            editor.showMessage(tab.name + " image has been deleted");
+                            let i = editor.tab;
+                            editor.tab.close({
+                                filePath: tab.filePath,
+                                type: "image"
+                            });
+                        });
+                    }
+                });
+                dlg.show();
+            }
+        }
+    });
+    editor.registerHeaderItem(hlp, { tabType: "image" });
+    hlp.hide();
 });
